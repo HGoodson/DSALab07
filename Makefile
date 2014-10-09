@@ -4,8 +4,8 @@ CC = g++
 FILES = RecursiveIntegration.o RombergIntegration.o Problem22_1.o 
 EXECUTABLE = Problem22_1.exe
 
-LAB_07_PATH = /$(DRIVE_LETTER)/07-Romberg_Integration
-GTKMM_PATH = /$(DRIVE_LETTER)/MinGW/gtkmm
+LAB_07_PATH = $(PROJECT_DIR)
+
 
 INC_DIRS = -I$(LAB_07_PATH)/CSC2110/
 LIB_DIRS = -L$(LAB_07_PATH)/CSC2110/
