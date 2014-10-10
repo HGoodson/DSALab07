@@ -11,17 +11,18 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
 {
    Double* db;  //use this variable to place and retrieve values on the queue
    
-   QueueLinked<Double>* q1 =
-   QueueLinked<Double>* q2 =
+   QueueLinked<Double>* q1 = new QueueLinked<Double>();
+   QueueLinked<Double>* q2 = new QueueLinked<Double>();
 
 
    int counter = 0;
    int n = 1;  //current number of intervals
-   while (                     )
+   while (counter < level)
    {
-      //DO THIS
-      //obtain the required number of trapezoid evaluations depending on the number of levels requested
-      //put all of the level 0 results on the q1
+		//DO THIS
+		//obtain the required number of trapezoid evaluations depending on the number of levels requested
+		//put all of the level 0 results on the q1
+		db = 
 
 
 
@@ -31,9 +32,8 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
 
 
 
-
-      n = 2*n;  //double the number of intervals
-      counter++;
+		n = 2*n;  //double the number of intervals
+		counter++;
    }
 
    //q1 now has all of the level 0 integration results
