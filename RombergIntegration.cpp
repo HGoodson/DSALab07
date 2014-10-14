@@ -6,6 +6,10 @@ using CSC2110::Double;
 
 #include <math.h>
 
+RombergIntegration::RombergIntegration()
+{}
+RombergIntegration::~RombergIntegration()
+{}
 //a is the lower limit and b is the upper limit
 double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double b, int level)
 {

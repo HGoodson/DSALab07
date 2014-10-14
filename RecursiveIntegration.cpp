@@ -1,6 +1,15 @@
 #include "RecursiveIntegration.h"
 #include <math.h>
 
+
+RRecursiveIntegration::RecursiveIntegration()
+{
+	
+}
+RRecursiveIntegration::~RecursiveIntegration()
+{
+	
+}
 //this method is here for 1-d integration (a convenience method)
 //the integration limits are placed in arrays of size 1, and other methods are called
 double RecursiveIntegration::romberg(MultiVarFunction* f, double a, double b, int n)

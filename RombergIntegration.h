@@ -9,6 +9,8 @@ class RombergIntegration
    private:
 
    public:
+   RombergIntegration();
+   ~RombergIntegration();
       static double accurateRomberg(MultiVarFunction* f, double a, double b, int level);
       
 };
