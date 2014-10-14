@@ -17,7 +17,7 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
    
    QueueLinked<Double>* q1 = new QueueLinked<Double>();
    QueueLinked<Double>* q2 = new QueueLinked<Double>();
-
+   RecursiveIntegration* RIMath = new RecursiveIntegration();
 
    int counter = 0;
    int n = 1;  //current number of intervals
@@ -26,7 +26,7 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
 		//DO THIS
 		//obtain the required number of trapezoid evaluations depending on the number of levels requested
 		//put all of the level 0 results on the q1
-		db = 
+		db =  RIMath->trap(double* f, n, a, b)
 
 
 
