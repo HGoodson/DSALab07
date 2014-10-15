@@ -1,10 +1,10 @@
 #include "RombergIntegration.h"
 #include "RecursiveIntegration.h"
 #include "QueueLinked.h"
-#include "Double.h"
+#include "CSC2110/Double.h"
 using CSC2110::Double;
 
-#include <math.h>
+#include "math.h"
 
 RombergIntegration::RombergIntegration()
 {}
@@ -27,21 +27,13 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
    {
    
 		double temp = 0;
-		temp = RIMath->(f,a,b,level);
+		temp = RIMath->romberg(f,a,b,level);
 		//DO THIS
 		//obtain the required number of trapezoid evaluations depending on the number of levels requested
 		//put all of the level 0 results on the q1
 		db = new Double(temp); 
 		//RIMath->trap(double* f, n, a, b);
 		q1->enqueue(db);
-
-
-
-
-
-
-
-
 
 		n = 2*n;  //double the number of intervals
 		counter++;
@@ -111,7 +103,6 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
    //obtain the final answer
    //db = q1->dequeue();
    double result = db->getValue();  
-   delete db;
 
    delete q1;
    delete q2;

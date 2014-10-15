@@ -4,7 +4,7 @@
 
 #include <iostream>
 using namespace std;
-#include <math.h>
+#include "math.h"
 
 Problem22_1::Problem22_1() 
 {}

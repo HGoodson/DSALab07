@@ -2,11 +2,11 @@
 #include <math.h>
 
 
-RRecursiveIntegration::RecursiveIntegration()
+RecursiveIntegration::RecursiveIntegration()
 {
 	
 }
-RRecursiveIntegration::~RecursiveIntegration()
+RecursiveIntegration::~RecursiveIntegration()
 {
 	
 }
