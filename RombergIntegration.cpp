@@ -27,13 +27,13 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
    {
    
 		double temp = 0;
-		temp = RecursiveIntegration::romberg(f,a,b,level);
+		temp = RIMath->(f,a,b,level);
 		//DO THIS
 		//obtain the required number of trapezoid evaluations depending on the number of levels requested
 		//put all of the level 0 results on the q1
 		db = new Double(temp); 
 		//RIMath->trap(double* f, n, a, b);
-		q1->QueueLinked<Double>::enqueue(db);
+		q1->enqueue(db);
 
 
 
