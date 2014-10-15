@@ -26,7 +26,8 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
 		//DO THIS
 		//obtain the required number of trapezoid evaluations depending on the number of levels requested
 		//put all of the level 0 results on the q1
-		db =  RIMath->trap(double* f, n, a, b)
+		db =  RIMath->trap(double* f, n, a, b);
+		q1->QueueLinked<Double>::enqueue(db);
 
 
 
@@ -49,12 +50,14 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
    //the total number of executions of the loop is ??
 
    //DO THIS
-   int iterations =                //can be precomputed
+   int iterations = counter;    //can be precomputed
    while (iterations > 0)
    {
+	  double recent  = q1->QueueLinked<Double>::dequeue();
+	  double late = q1->QueueLinked<Double>::peek();
       //DO THIS
       //use the algorithm described in the lab to improve the accuracy of your level 0 results
-
+	  //factor = ((pow(4,power) *  recent) - late)/(pow(4,power)-1);
 
 
 
