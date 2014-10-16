@@ -3,7 +3,8 @@
 #include "QueueLinked.h"
 #include "CSC2110/Double.h"
 using CSC2110::Double;
-
+#include <iostream>
+using namespace std;
 #include "math.h"
 
 RombergIntegration::RombergIntegration()
@@ -32,13 +33,11 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
 		//obtain the required number of trapezoid evaluations depending on the number of levels requested
 		//put all of the level 0 results on the q1
 		db = new Double(temp); 
-		//RIMath->trap(double* f, n, a, b);
 		q1->enqueue(db);
 
 		n = 2*n;  //double the number of intervals
 		counter++;
    }
-
    //q1 now has all of the level 0 integration results
 
    double factor;  //use this to compute the current Romberg Factor (4^k stuff)
@@ -51,16 +50,18 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
    int iterations = counter;    //can be precomputed
    while (iterations > 0)
    {
-	  //double recent  = q1->QueueLinked<Double>::dequeue();
-	  //double late = q1->QueueLinked<Double>::peek();
+	
       //DO THIS
       //use the algorithm described in the lab to improve the accuracy of your level 0 results
 	  //factor = ((pow(4,power) *  recent) - late)/(pow(4,power)-1);
 	  factor = pow(4,power);
 		if(queue == true)
 		{
+			cout << "In If " << endl;
 		Double* first = q1->dequeue();
+		cout << "After dequeue" << endl;
 		Double* second = q1->peek();
+		cout << "After Peek" << endl;
 		double tm = first->getValue();
 		double teem = second->getValue();
 		double resultant = ((factor * teem) - tm)/(factor - 1);
@@ -99,7 +100,6 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
 
       iterations--;
    }
-
    //obtain the final answer
    //db = q1->dequeue();
    double result = db->getValue();  

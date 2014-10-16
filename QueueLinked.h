@@ -9,6 +9,7 @@ class QueueLinked
 
    private:
       NextNode<T>* back;
+      NextNode<T>* head;
       int sze;
 
    public:
@@ -27,6 +28,7 @@ template < class T >
 QueueLinked<T>::QueueLinked()
 {
    back = NULL;
+   head = NULL;
    sze = 0;
 }
 
@@ -74,7 +76,6 @@ T* QueueLinked<T>::peek()
     if (!isEmpty()) 
     {  
       // queue is not empty; retrieve front
-      NextNode<T>* head = back->getNext();
       item = head->getItem();
     }
     return item;
@@ -88,7 +89,8 @@ void QueueLinked<T>::enqueue(T* item)
 	
 	if (sze == 0)
 	{
-	node = back;
+	back = node;
+	head = node;
 	}
 
 	else
@@ -111,9 +113,10 @@ T* QueueLinked<T>::dequeue()
 	if (!isEmpty()) 
     {  
       // queue is not empty; retrieve front
-      NextNode<T>* head = back->getNext();
       item = head->getItem();
-	  back->setNext(head->getNext());
+	  NextNode<T>* next = head->getNext();
+	  delete head;
+	  head = next;
     }
 	
 	sze--;
