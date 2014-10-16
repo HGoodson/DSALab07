@@ -22,13 +22,12 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
    QueueLinked<Double>* q2 = new QueueLinked<Double>();
    RecursiveIntegration* RIMath = new RecursiveIntegration();
 
-   int counter = 0;
+   int counter = 4;
    int n = 1;  //current number of intervals
-   while (counter < level)
+   while (counter >= 0)
    {
-   
 		double temp = 0;
-		temp = RIMath->romberg(f,a,b,level);
+		temp = RIMath->romberg(f,a,b,(level+1));
 		//DO THIS
 		//obtain the required number of trapezoid evaluations depending on the number of levels requested
 		//put all of the level 0 results on the q1
@@ -36,7 +35,7 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
 		q1->enqueue(db);
 
 		n = 2*n;  //double the number of intervals
-		counter++;
+		counter--;
    }
    //q1 now has all of the level 0 integration results
 
@@ -47,8 +46,8 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
    //the total number of executions of the loop is ??
 
    //DO THIS
-   int iterations = counter;    //can be precomputed
-   while (iterations > 0)
+   int iterations = 4;    //can be precomputed
+   while (iterations >= 0)
    {
 	
       //DO THIS
@@ -57,20 +56,13 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
 	  factor = pow(4,power);
 		if(queue == true)
 		{
-			cout << "In If " << endl;
 		Double* first = q1->dequeue();
 		Double* second = q1->peek();
 		double tm = first->getValue();
-		cout << "First Value" << endl;
 		double teem = second->getValue();
-		cout << "Second Value" << endl;
 		double resultant = ((factor * teem) - tm)/(factor - 1);
-		cout << "After Calculation" << endl;
 		Double* con = new Double(resultant);
-		cout << "Create new" << endl;
 		q2->enqueue(con);
-		cout << "after enqueue " << endl;
-		
 		if(q1->size() == 1)
 		{
 		q1->dequeue();
