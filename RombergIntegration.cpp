@@ -59,14 +59,17 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
 		{
 			cout << "In If " << endl;
 		Double* first = q1->dequeue();
-		cout << "After dequeue" << endl;
 		Double* second = q1->peek();
-		cout << "After Peek" << endl;
 		double tm = first->getValue();
+		cout << "First Value" << endl;
 		double teem = second->getValue();
+		cout << "Second Value" << endl;
 		double resultant = ((factor * teem) - tm)/(factor - 1);
+		cout << "After Calculation" << endl;
 		Double* con = new Double(resultant);
+		cout << "Create new" << endl;
 		q2->enqueue(con);
+		cout << "after enqueue " << endl;
 		
 		if(q1->size() == 1)
 		{

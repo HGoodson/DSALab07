@@ -115,7 +115,7 @@ T* QueueLinked<T>::dequeue()
       // queue is not empty; retrieve front
       item = head->getItem();
 	  NextNode<T>* next = head->getNext();
-	  delete head;
+	  delete head; 
 	  head = next;
     }
 	
